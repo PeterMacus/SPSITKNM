@@ -97,28 +97,32 @@ Stránka funguje len po prihlásení sa a úspešnej verifikácii.
 
 ## Scenáre - konkrétna implementácia Use Case
 
-**1. Vyhľadávanie kódového chybového hlásenia**  
-   - **Názov**: Vyhľadanie chybového kódu P0300  
-   - **Kontext**: Mechanik chce diagnostikovať problém s motorom vozidla.  
+**1. Odoslanie požiadavky na zaparkovanie / vyparkovanie vozidla**  
+   - **Názov**: Odoslanie požiadavky na zaparkovanie / vyparkovanie  
+   - **Kontext**: Používateľ chce prostredníctvom webovej aplikácie zaparkovať vozidlo do voľného slotu alebo privolať zaparkované vozidlo z garáže.
    - **Level zanoření Use Case**: Hlavný scénar  
-   - **Aktéri**: Mechanik  
-   - **Stakeholdeři a zájmové osoby**: Mechanici, majitelia vozidiel  
-   - **Vstupné podmienky**: Mechanik má prístup k OBD-II diagnostickej jednotke  
-   - **Výstupné podmienky**: Zobrazenie chybového kódu  
-   - **Minimálny výstup**: Zobrazenie chybového kódu  
-   - **Ideálny výstup**: Zobrazenie detailných informácií o závade
+   - **Aktéri**: Používateľ, ESP32
+   - **Stakeholdeři a zájmové osoby**: Majiteľ garáže, vodiči využívajúci garážový systém
+   - **Vstupné podmienky**: Používateľ je prihlásený vo webovej aplikácii a systém je pripojený k internetu.
+   - **Výstupné podmienky**:Príkaz je zapísaný do Firebase databázy a ESP32 vykoná mechanický pohyb garáže.
+   - **Minimálny výstup**: Zobrazenie stavu spracovania požiadavky na webe.
+   - **Ideálny výstup**: Úspešný pohyb garáže do požadovanej polohy a okamžitá aktualizácia stavu v aplikácii.
 
 **Hlavný scénár**:  
-1. Mechanik pripojí OBD-II jednotku k vozidlu.  
-2. Systém vykoná diagnostiku a zobraziť chybový kód.
+1. Používateľ na webovej stránke zvolí akciu.
+2. Webová aplikácia zapíše požiadavku do Firebase databázy
+3. ESP32 načíta zmenu z databázy a vykoná mechanický pohyb bubnu/výťahu.
+4. Po dokončení pohybu ESP32 aktualizuje stav v databáze a web zobrazí novú polohu.
 
 **Rozšírenie**:  
-- Ak diagnostika zlyhá, zobrazí sa chybová hláška a mechanik sa musí pripojiť manuálne.
-
+- Ak zlyhá pripojenie na internet: Aplikácia nezapíše príkaz do Firebase a zobrazí používateľovi chybovú správu o nedostupnosti sieťového pripojenia.
+- Ak ESP32 neodpovedá: Aplikácia po uplinutí časového limitu vyvolá chybové upozornenie.
 ---
 
 ## Sekvenčný diagram
-- Vytvorte sekvenčný diagram, ktorý ukáže interakcie medzi mechanikom, diagnostickým nástrojom a vozidlom.
+
+<img width="652" height="659" alt="Untitled Diagram drawio (6)" src="https://github.com/user-attachments/assets/4d02d7f8-1e71-40ff-b7c3-91df469bf918" />
+
 
 ---
 
