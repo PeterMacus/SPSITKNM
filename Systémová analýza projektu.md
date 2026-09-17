@@ -1,123 +1,88 @@
 
-# Názov projektu (+ meno riešiteľa)
-- **Názov projektu**: [Názov projektu]
-- **Meno riešiteľa**: [Meno študenta]
-- **Login**: [Login]
-
----
-
-## Seznam kapitol - částí projektu
-1. Úvod
-2. Dôvod a okolnosti zavedenia riešenia
-3. Popis projektu (slovné zadanie, popis od zákazníka)
-4. Analýza požiadaviek
-5. Systémové požiadavky (FURPS)
-6. Kritické situácie
-7. Hranice systému
-8. Kontext prostredia
-9. Charakteristika aktérov
-10. Use Case diagram
-11. Scenáre (Implementácia Use Case)
-12. Sekvenčný diagram
-13. Triedny diagram
-14. Aktivitný diagram — *bonus*
-15. BPMN diagram — *bonus*
-16. Wireframe kľúčových obrazoviek — *bonus*
-17. Záver
-
----
-
-## Popis zmien v dokumentu
-Tento dokument reflektuje všetky zmeny a vylepšenia, ktoré boli vykonané v predchádzajúcich verziách, ako aj aktualizácie implementácie a návrhu systému.
+# Automat garáž ovládanie Peter Macúš
+- **Názov projektu**: Automat garáž ovládanie
+- **Meno riešiteľa**: Peter Macúš
 
 ---
 
 ## Dôvod a okolnosti zavedenia riešenia
-Tento projekt je navrhnutý s cieľom zlepšiť proces diagnostiky automobilov. Zavedenie jednotného systému pre diagnostiku umožní mechanikom a technikom prístup k rôznym riadiacim jednotkám a ich diagnostickým kódom bez nutnosti používať rozličné doplnkové softvéry. Cieľom je zvýšiť efektivitu, minimalizovať chyby a ušetriť čas pri diagnostike vozidiel.
+Stránka je navrhnutá na zjednodušenie ovládania automatických garáží poháňaných ESP32. Na stránke sa používateľ dokáže jednoducho orientovať vďaka zrozumiteľnému UI s jednoduchým ovládaním.  
 
 ---
 
 ## Slovné zadanie, popis projektu od zákazníka
-Cieľom tohto projektu je vytvoriť prehľadný a intuitívny diagnostický systém pre správu automobilov. Tento systém bude slúžiť na diagnostiku závad na vozidlách a analýzu dát z riadiacich jednotiek (ECU). Funkcionality budú zahŕňať: čítanie diagnostických kódov, zobrazovanie meraných hodnôt, testovanie aktuátorov a predikciu údržbových upozornení.
+Cieľom tohto projektu je vytvoriť prehľadnú a intuitívnu stránku pre ovládanie autonómnej garáže určenej na zjednodušenie parkovania. Stránka bude jednoduchá na pochopenie pre všetkých užívateľov. Bude komunikovať s ESP32, ktoré ovláda chod celej garáže a zároveň bude zobrazovať aktuálny stav a obsadenosť garáže. Pred príjazdom do garáže zároveň bude zároveň ukázaný odhadovaný čas príchodu.
 
 ---
 
 ## Seznam modulů projektu a jejich významných atributů
-1. **Modul pre čítanie diagnostických kódov (DTC)**
-   - Atribúty: diagnostické kódy, stav vozidla, počet chýb
-   - Unikátna identifikácia objektov: Kód chyby, ID vozidla
+1. **Modul zobrazenia stavu a obsadenosti**
+   - Atribúty: živý prehľad voľných a obsadených pozícii, vizualizácia stavu garáže (voľno/plno)(funkčná/v údržbe) 
+   - Unikátna identifikácia objektov: ID parkovacieho slotu, ID garáže
 
 2. **Užívateľské rozhranie (UI)**
-   - Atribúty: grafické rozhranie, interaktívne prvky
-   - Unikátna identifikácia objektov: ID užívateľa, ID diagnostického nástroja
+   - Atribúty: Interaktívne tlačidlá na otvorenie/privolanie parkovacej pozície, responzívny dizajn
+   - Unikátna identifikácia objektov: ID užívateľa
 
-3. **Komunikačný modul**
-   - Atribúty: pripojenie k OBD-II, synchronizácia s externými zariadeniami
-   - Unikátna identifikácia objektov: Komunikačné protokoly, ID zariadení
-
-4. **Dátový analytický modul**
-   - Atribúty: analýza dát, predikčné modely
-   - Unikátna identifikácia objektov: Predikčný model, ID analýzy
-
-5. **Modul pre aktualizácie softvéru**
-   - Atribúty: verzia softvéru, súbor na aktualizáciu
-   - Unikátna identifikácia objektov: Verzia systému, ID aktualizácie
+3. **Dátový analytický modul**
+   - Atribúty: obojstranná synchronizácia dát s firebase v reálnom čase, odosielanie požiadaviek zo stránky, prijímanie zmien zo senzorov
+   - Unikátna identifikácia objektov: API kľúč
 
 ---
 
 ## Systémové požiadavky FURPS
 1. **Funkčnosť (Functionality - F)**
-   - Možnosť zobraziť pamäť závad
-   - Čítanie meraných hodnôt z ECU
-   - Testovanie aktuátorov a resetovanie parametrov
+   - Zobrazenie reálneho stavu obsadenosti
+   - Zobrazenie stavu garáže
+   - Odosielanie príkazov pre privolanie parkovacieho miesta
 
 2. **Vhodnosť k použitiu (Usability - U)**
    - Užívateľsky prívetivý rozhranie
    - Intuitívne ovládanie pre profesionálov aj laikov
+   - Prístupné pre každého s prístupom k internetu a internetovému prehliadaču
 
 3. **Spoľahlivosť (Reliability - R)**
-   - Nízka miera zlyhaní, konzistentná diagnostika
-   - Obnovenie systému v prípade zlyhania
+   - Spoľahlivé pripojenie medzi firebase a ESP32
+   - Upozornenie v prípade chyby 
 
 4. **Výkon (Performance - P)**
-   - Rýchla diagnostika s nízkou spotrebou zdrojov
+   - Stránka vyžaduje minimálny výkon na zariadení 
 
 5. **Schopnosť údržby (Supportability - S)**
-   - Jednoduché aktualizácie a testovanie systému
-   - Podpora pre nové modely vozidiel
+   - V prípade chýb by bola stránka upravená a opravená 
 
 ---
 
 ## Kritické situácie
 1. **Systémové**
-   - Výpadok napájania: Systém nie je schopný vykonať diagnostiku bez napájania.
-   - Zlyhanie hardware: Poškodenie senzorov alebo ECU vedie k nepresnej diagnostike.
+   - Výpadok napájania: Garáž nie je schopná pracovať bez prísunu elektrickej energie.
+   - Výpadok internetového pripojenia: Stránka stráca spojenie s ESP32 a databázou firebase
 
 2. **Aplikačné**
-   - Problémy s komunikáciou medzi diagnostickým zariadením a OBD-II portom vozidla.
+   - Chyba komunikácie medzi webom a databázou: Zlyhanie zápisu/čítania stavov
 
 ---
 
 ## Tri situácie definujúce hranice systému
 1. **Ideálny scenár**
-   - Systém úspešne vykoná diagnostiku, zobrazuje chybové kódy a poskytuje potrebné informácie pre opravu vozidla.
+   - Užívateľ zvolí akciu na webe, príkaz sa okamžite zapíše do Firebase, garáž vykoná pohyb a web zobrazí aktualizovaný stav v reálnom čase.
 
 2. **Hranične riešiteľný scenár**
-   - Systém nedokáže identifikovať konkrétnu závadu, ale poskytne návrh na ďalšiu diagnostiku.
+   - Pripojenie je pomalé alebo nestabilné. Aplikácia počká na potvrdenie z databázy, zobrazí sa indikátor načítavania a po nadviazaní spojenia dáta zosynchronizuje.
 
-3. **Situácie, ktoré systém nezvládne**
-   - Systém nie je schopný vykonať diagnostiku v prípade úplného zlyhania ECU alebo riadiacej jednotky.
+3. **Nevyriešiteľný scenár**
+   - Úplný výpadok internetu na strane používateľa alebo zlyhanie Firebase cloudu. Aplikácia nevie odoslať príkaz a zobrazí chybovú správu s možnosťou opätovného načítania.
 
 ---
 
 ## Kontext prostredia
-Systém bude implementovaný ako samostatné riešenie, ktoré nebude závislé od existujúcich systémov. Bude musieť zohľadňovať rôzne environmentálne faktory, ako je teplota, vlhkosť a typ terénu, ktoré môžu ovplyvniť diagnostiku.
+Stránka funguje len po prihlásení sa a úspešnej verifikácii.
 
 ---
 
 ## Charakteristika aktérov a prostredia
-- **Aktéri**: Mechanik, technik, výrobca automobilov, majiteľ vozidla
-- **Prostredie**: Auto servis, mobilné zariadenia, diagnostické nástroje
+- **Aktéri**: Osoba parkujúca auto, ESP32
+- **Prostredie**: internetový prehliadač, garáž
 
 ---
 
