@@ -89,7 +89,8 @@ Stránka funguje len po prihlásení sa a úspešnej verifikácii.
 ## Use Case diagram
 - **Minimálne 5 modulov a 2 aktéry**
 - Doporučené maximum: 5 modulov s využitím `include` a `extend` vzťahov.
-- <img width="822" height="462" alt="Untitled Diagram drawio" src="https://github.com/user-attachments/assets/80bd2fa5-486f-4874-8679-5734bc2457d3" />
+- <img width="842" height="462" alt="Untitled Diagram drawio (3)" src="https://github.com/user-attachments/assets/f719f494-b497-4ff5-8f89-c82c75189ff0" />
+
 
 
 ---
