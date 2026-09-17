@@ -1,6 +1,6 @@
 
 # Názov projektu (+ meno riešiteľa)
-- **Názov projektu**: [Názov projektu]
+- **Názov projektu**: [Názov projektu] 
 - **Meno riešiteľa**: [Meno študenta]
 - **Login**: [Login]
 
