@@ -122,7 +122,8 @@ Stránka funguje len po prihlásení sa a úspešnej verifikácii.
 
 ## Sekvenčný diagram
 
-<img width="619" height="612" alt="Untitled Diagram drawio" src="https://github.com/user-attachments/assets/12720c73-56c8-4b4f-8437-3bc66533a352" />
+<img width="684" height="634" alt="image" src="https://github.com/user-attachments/assets/2fa88a37-6028-4cb1-8684-5805262a95dc" />
+
 
 
 
