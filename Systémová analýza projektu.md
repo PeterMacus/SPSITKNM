@@ -11,7 +11,7 @@ Stránka je navrhnutá na zjednodušenie ovládania automatických garáží poh
 ---
 
 ## Slovné zadanie, popis projektu od zákazníka
-Cieľom tohto projektu je vytvoriť prehľadnú a intuitívnu stránku pre ovládanie autonómnej garáže určenej na zjednodušenie parkovania. Stránka bude jednoduchá na pochopenie pre všetkých užívateľov. Bude komunikovať s ESP32, ktoré ovláda chod celej garáže a zároveň bude zobrazovať aktuálny stav a obsadenosť garáže. Pred príjazdom do garáže zároveň bude zároveň ukázaný odhadovaný čas príchodu.
+Cieľom tohto projektu je vytvoriť prehľadnú a intuitívnu stránku pre ovládanie autonómnej garáže určenej na zjednodušenie parkovania. Stránka bude jednoduchá na pochopenie pre všetkých užívateľov. Bude komunikovať s ESP32, ktoré ovláda chod celej garáže a zároveň bude zobrazovať aktuálny stav a obsadenosť garáže.
 
 ---
 
@@ -26,7 +26,7 @@ Cieľom tohto projektu je vytvoriť prehľadnú a intuitívnu stránku pre ovlá
 
 3. **Dátový analytický modul**
    - Atribúty: obojstranná synchronizácia dát s firebase v reálnom čase, odosielanie požiadaviek zo stránky, prijímanie zmien zo senzorov
-   - Unikátna identifikácia objektov: API kľúč
+   - Unikátna identifikácia objektov: ID záznamu vygenerované databázou Firebase (autoincrement / push ID) a časová pečiatka (timestamp)
 
 ---
 
@@ -46,10 +46,10 @@ Cieľom tohto projektu je vytvoriť prehľadnú a intuitívnu stránku pre ovlá
    - Upozornenie v prípade chyby 
 
 4. **Výkon (Performance - P)**
-   - Stránka vyžaduje minimálny výkon na zariadení 
+   - Aplikácia musí načítavať a zobrazovať aktuálny stav garáže a slotov s odozvou do 1,5 sekundy na bežných mobilných a webových prehliadačoch a prenos dát cez Firebase nepresiahne 50 kB na jednu reláciu.
 
 5. **Schopnosť údržby (Supportability - S)**
-   - V prípade chýb by bola stránka upravená a opravená 
+   -Kód aplikácie je modularizovaný s oddelenou logikou pre komunikáciu s Firebase. Systém loguje chybové stavy do konzoly/databázy, čo umožňuje lokalizáciu a odstránenie chýb v kóde do 24 hodín od ich detekcie bez nutnosti odstávky celej infraštruktúry.
 
 ---
 
