@@ -130,7 +130,8 @@ Stránka funguje len po prihlásení sa a úspešnej verifikácii.
 ---
 
 ## Triedny diagram
-<img width="892" height="712" alt="Untitled Diagram drawio (8)" src="https://github.com/user-attachments/assets/15bb0d8f-874b-49b3-b051-2144cf9cb5c7" />
+<img width="1422" height="712" alt="Untitled Diagram drawio" src="https://github.com/user-attachments/assets/d1f28ade-8595-42a7-8b9e-3357c941a44b" />
+
 
 
 ---
