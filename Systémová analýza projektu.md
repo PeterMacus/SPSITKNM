@@ -81,7 +81,7 @@ Stránka funguje len po prihlásení sa a úspešnej verifikácii.
 ---
 
 ## Charakteristika aktérov a prostredia
-- **Aktéri**: Osoba parkujúca auto, ESP32
+- **Aktéri**: Používateľ parkujúci auto, ESP32
 - **Prostredie**: internetový prehliadač, garáž
 
 ---
