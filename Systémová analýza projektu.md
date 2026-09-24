@@ -20,7 +20,7 @@ Cieľom tohto projektu je vytvoriť prehľadnú a intuitívnu stránku pre ovlá
    - Atribúty: živý prehľad voľných a obsadených pozícii, vizualizácia stavu garáže (voľno/plno)(funkčná/v údržbe) 
    - Unikátna identifikácia objektov: ID parkovacieho slotu, ID garáže
 
-2. **Užívateľské rozhranie (UI)**
+2. **Používateľské rozhranie (UI)**
    - Atribúty: Interaktívne tlačidlá na otvorenie/privolanie parkovacej pozície, responzívny dizajn
    - Unikátna identifikácia objektov: ID užívateľa
 
